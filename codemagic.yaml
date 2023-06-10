@@ -1,7 +1,7 @@
 workflows:
   snapcraft-release:
     name: Snapcraft Release
-    instance_type: linux_pro
+    instance_type: linux_x2
     triggering:
       tag_patterns:
          - pattern: '*-test'
